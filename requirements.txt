@@ -1,0 +1,4 @@
+moviepy
+Pillow
+edge-tts
+requests
