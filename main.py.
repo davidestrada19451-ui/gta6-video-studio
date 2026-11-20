@@ -1,0 +1,30 @@
+
+from pathlib import Path
+from PIL import Image, ImageDraw, ImageFont
+import textwrap
+
+OUTPUT = Path("video_gta6")
+OUTPUT.mkdir(exist_ok=True)
+
+titulo = "GTA 6"
+texto = (
+    "Grand Theft Auto 6 es uno de los videojuegos "
+    "más esperados de la historia. Rockstar Games "
+    "nos llevará de regreso a Vice City, con una "
+    "nueva historia y un mundo abierto."
+)
+
+imagen = Image.new("RGB", (1080, 1920), "#101827")
+dibujo = ImageDraw.Draw(imagen)
+
+dibujo.text((70, 400), titulo, fill="white")
+dibujo.text(
+    (70, 600),
+    "\n".join(textwrap.wrap(texto, 35)),
+    fill="white",
+    spacing=25
+)
+
+imagen.save(OUTPUT / "miniatura_prueba.png")
+
+print("Primera imagen creada correctamente.")
